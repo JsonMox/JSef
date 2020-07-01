@@ -1,0 +1,72 @@
+<!DOCTYPE>
+  <html>
+  <head>
+  <meta charset="utf-8" />
+  <title>设置表格单元格等宽</title>
+  <style type="text/css">
+   /*
+      使字体在所有设备上都达到最佳的显示
+    */
+  html { 
+    -moz-osx-font-smoothing: grayscale; 
+    -webkit-font-smoothing: antialiased; 
+    text-rendering: optimizeLegibility; 
+  }
+
+  /*
+    给body添加阴影 花里古怪
+  */
+  body:before {
+    content: "";
+    position: fixed;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+    -moz-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+    box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+    z-index: 100;
+  }
+
+   /*
+    表格单元格等宽
+   */
+    .calendar { table-layout: fixed; }
+  </style>
+</head>
+
+<body>
+
+<table width="100%" border="1" class="calendar">
+    <tr>
+        <td>我在测试我在测试我在测试我在测试我在测试我在测试我在测试我在测试我在测试</td>
+        <td>122222222222222</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+    </tr>
+  </table>
+</body>
+</html>

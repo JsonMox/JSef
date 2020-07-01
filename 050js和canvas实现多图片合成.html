@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>多张图片合成一张图片</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        button {
+            width: 100px;
+            height: 100px;
+            border: 1px solid gold;
+            font-size: 16px;
+            line-height: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button onclick="drawAndShareImage()">开始合成</button>
+    </div>
+    <script>
+        function drawAndShareImage(){
+            var canvas = document.createElement("canvas");
+            canvas.width = 700;
+            canvas.height = 700;
+            var context = canvas.getContext("2d");
+            context.rect(0 , 0 , canvas.width , canvas.height);
+            context.fillStyle = "#fff";
+            context.fill();
+            var myImage = new Image();
+            myImage.src = "./img/paint-5.png";  //背景图片 你自己本地的图片或者在线图片
+            myImage.crossOrigin = 'Anonymous';
+            myImage.onload = function(){
+                context.drawImage(myImage , 0 , 0 , 700 , 700);
+                context.font = "60px Courier New";
+                context.fillText("我是文字",350,450);
+                var myImage2 = new Image();
+                myImage2.src = "./img/paint-5.png";  //你自己本地的图片或者在线图片
+                myImage2.crossOrigin = 'Anonymous';
+                myImage2.onload = function(){
+                context.drawImage(myImage2 , 175 , 175 , 225 , 225);
+                var base64 = canvas.toDataURL("image/png"); //"image/png" 这里注意一下
+                var img = document.getElementById('avatar');
+                // document.getElementById('avatar').src = base64;
+                img.setAttribute('src' , base64);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

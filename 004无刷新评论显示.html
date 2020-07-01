@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset = "utf8">
+		<meta name = "viewport" content = "width = device-width, inital-scal = 1">
+		<title>004无刷新评论显示</title>
+		<script type="text/javascript" src = "./js/jquery-3.4.1.min.js"></script>
+	</head>
+	<style>
+		#container{
+			width:30%;
+			margin-top:10%;
+			margin-left:35%;
+			text-align:center;
+			border:2px solid yellow;
+			background-color:skyblue;
+		}
+		
+		#t{
+			height:60px;
+			margin:5px;
+			text-align:center;
+			border:1px solid red;
+		}
+		
+		#name{
+			height: 30px;
+			margin-top: 10px;
+			line-height: 30px;
+		}
+		
+		#comment{
+			margin-top: 10px;
+		}
+		
+		#btn{
+			width: 60px;
+			height: 40px;
+			margin-bottom: 8px;
+			border: none;
+			border-radius: 10%;
+		}
+		
+		button:hover
+		{	
+			cursor: pointer;
+			background: red;
+		}
+	</style>
+	<body>
+		<div id = "container">
+			<div id = "t">
+				<table id = "mytable"></table>
+			</div>
+			<div id = "name">
+				<label>WHO ARE U：</label>
+				<input id = "nickname" type = "text" style = "font-size:20px;" /><br />
+			</div>
+			<div id = "comment">
+				<textarea id = "comm" style = "font-size:16px;"></textarea>
+			</div>
+			<div id = "btn_group">
+				<button id = "btn" type = "button" onclick = "addComment()">去评论</button>
+			</div> 
+		</div>
+		
+		<script type = "text/javascript">
+			function addComment() {
+				var nickname = document.getElementById("nickname").value;
+				var input = document.getElementById("comm").value;
+
+				var table = document.getElementById("mytable");
+				var tr = document.createElement("tr");//创建新的tr
+
+				var Nickname = document.createElement("td"); //创建新的td
+				Nickname.innerText = nickname;//赋值给td
+				tr.appendChild(Nickname); //将td添加到tr中
+
+				var Comm = document.createElement("td");
+				Comm.innerText = input;
+				tr.appendChild(Comm);
+
+				table.tBodies[0].appendChild(tr);//一个表格允许有多个tbody
+			}
+		</script>
+	</body>
+</html>
+

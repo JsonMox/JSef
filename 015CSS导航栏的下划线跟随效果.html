@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>for test, the deep ocean</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>  
+        /*  menu-down 的样式  */
+        .menu-down ul li {
+            display: block;
+            float: left;
+            padding: 0px 5px 5px 5px; 
+            color: black;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .menu-down ul li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .menu-down ul li::before {
+            content: "";
+            top: 0;
+            left: 100%;
+            width: 0;
+            height: 100%;
+            border-bottom: 2px solid skyblue;
+            position: absolute;
+            transition: 0.2s all linear;
+        }
+
+        .menu-down ul li:hover::before {
+            width: 100%;
+            left: 0;
+        }
+
+        li:hover~li::before {
+            left: 0;
+        }
+
+        blockquote {
+            border: 1px solid skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu-down">
+        <ul class="nav-ul">
+            <li><a href="javascript:void(0);">主页是什么鬼</a></li>
+            <li><a href="javascript:void(0);">工作日志造成系统崩溃</a></li>
+            <li><a href="javascript:void(0);">设备运行记录消失不见了</a></li>
+            <li><a href="javascript:void(0);">其他的内存泄露机制的改革</a></li>
+        </ul>
+    </div>
+    <blockquote cite="www.baidu.com" style="display: inline-block;"><p class="left">when u say nothing at all</p></blockquote>
+    <blockquote cite="www.baidu.com" style="display: block;"><p class="left">when u say nothing at all</p></blockquote>
+</body>
+
+</html>

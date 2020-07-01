@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>浮动及清除浮动</title>
+
+    <style>
+        .container {
+            width: 300px;
+            background-color: skyblue;
+        }
+
+        .block-1,
+        .block-2 {
+            width: 100px;
+            height: 100px;
+        }
+
+        .block-1 {
+            float: left;
+            background-color: slateblue;
+        }
+
+        .block-2 {
+            float: right;
+            background-color: skyblue;
+        }
+
+        .block-3 {
+            width: 200px;
+            height: 200px;
+            background-color: rosybrown;
+        }
+
+        .cls {
+            clear: both;
+        }
+
+       /*  .container::after {
+            content: ".";
+            height: 0;
+            visibility: hidden;
+            display: block;
+            clear: both;
+        } */
+
+       /*  .container {
+            overflow: hidden;
+        } */
+    </style>
+</head>
+
+<body>
+    <h3>如何清除浮动</h3>
+    <div class="interview">
+        <ul id="myDesion">
+            <li>为父级元素设置高度，样式设置为<code>height: ***px</code>,但高度值要高于子级浮动元素的最大值，治标不治本，不推荐</li>
+            <li>插入空标签，样式设置为<code>clear: both</code>，缺点是增加了无意义的空标签</li>
+            <li>利用::after伪元素为父级，相当于父级后面添加了一个标签，增加无意义标签</li>
+            <li>利用overflow属性 overflow: hidden; overflow: auto;</li>
+            <p>当我们给container添加了overflow属性后，子级div的浮动已经被清除 </br>
+               需要特别注意的是：</br>
+               没有设置container高度时，子级div高度，container高度会被撑开</br>
+               当有设置container高度时，无论子级div高度是多少，container的高度都是设定的值，当子级高度超出container高度时，超出部分会被隐藏，右侧出现滚动条，这就是溢出的含义。
+            </p>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="block-1">block-1</div>
+        <div class="block-2">block-2</div>
+    </div>
+    <!--  <div class="cls"></div> -->
+    <div class="block-3">block-3</div>
+</body>
+
+</html>

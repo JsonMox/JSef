@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>for test, the deep ocean</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        #container{
+            position: relative;
+            width: 300px;
+            height: 200px;
+            transition: all 1s linear;
+            transform-style: preserve-3d;
+        }
+
+        #front,
+        #back{
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            /* 属性设为0 很重要，要不然效果不同 */
+            top: 0; 
+            left: 0;
+            color: #fff;
+            font-size: 16px;
+            line-height: 200px;
+            text-align: center;
+        }
+
+        #front{
+            background-color: green;
+        }
+
+        #back{
+            background-color: skyblue;
+            transform: rotateX(-180deg);
+        }
+        
+        #container:hover{ 
+            transform: rotateX(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="front">正面</div>
+        <div id="back">反面</div>
+    </div>
+</body>
+
+</html>

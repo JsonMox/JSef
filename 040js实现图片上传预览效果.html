@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>110blank</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <input type="file" onchange="uploadImg(this)" accept="image/*" />
+
+    <img id="viewImg" />
+
+    <script>
+        function uploadImg(fileDom) {
+            //取到file文件的本地路径，就是你电脑上的存储路径
+            console.log(fileDom.value);
+
+            // 获取图片数据对象
+            var file = fileDom.files[0];
+
+            // 获取图片名字
+            console.log(file.name);
+
+            // 获取图片文件大小,单位为byte
+            console.log(file.size);
+
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+
+            //确保文件成功获取，base64数据量比较大
+            reader.onload = function (event) {
+                var e = event || window.event;
+                var img = document.getElementById("viewImg");
+                img.src = e.target.result;
+                //或者 img.src = this.result; 因为e.target == this
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>input输入框校验</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+    
+</head>
+
+<body>
+    <div style="width:300px;background:#ccc; overflow: auto;">
+        <div style="width:100px;height:100px;float:left;background:Green;"></div>
+        <div style="width:100px;height:100px;float:right;background:Red;"></div>
+    </div>
+
+    <input type="text" placeholder="只能英文、数字，英文开头" onKeyUp="value = value.replace(/[^a-z0-9]|^[^a-z]/ig,'')" />
+    <input type="text" placeholder="只能输英文、数字和'_'" onKeyUp="value=value.replace(/[\W]/g,'')" />
+    </br>
+
+    <label for="price">金额校验输入带有2位小数的数值</label>
+    <input type="text" placeholder="0.00" id="price" name="price" class="form-control" />
+
+    <p>propertychange和input事件，这两个事件其实是一回事，只是不同的标准罢了，可以同时绑定，</p>
+    <p>input是标准的浏览器（W3C）事件，一般应用于input元素，当input的value发生变化就会发生，无论是键盘输入还是鼠标,重点是黏贴的改变都能及时监听到变化；</p>
+    <p>propertychange是IE专属的事件，只要当前对象属性值发生改变就能触发。</p>
+
+    <script>
+        $("#price").on('input  propertychange', function () {
+            //如果输入非数字，则替换为''
+            this.value = this.value.replace(/[^\d\.]/g, '');
+            //必须保证第一个为数字而不是.     
+            this.value = this.value.replace(/^\./g, '');
+            //保证只有出现一个.而没有多个.     
+            this.value = this.value.replace(/\.{2,}/g, '.');
+            //保证.只出现一次，而不能出现两次以上     
+            this.value = this.value.replace('.', '$#$').replace(/\./g, '').replace('$#$', '.');
+            //只能输入两位小数
+            this.value = this.value.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3');
+        })
+    </script>
+</body>
+
+</html>

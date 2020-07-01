@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>特殊风格的按钮</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        .container {
+            width: 800px;
+            height: 500px;
+            margin-left: 300px;
+            margin-top: 40px;
+            padding: 30px;
+            border: 1px solid lightblue;
+            background-color: lightgray;
+        }
+
+        a,
+        a:hover {
+            text-decoration: none;
+        }
+
+        #manner1 {
+            width: 50px;
+            height: 30px;
+            padding: 10px;
+            box-shadow: 5px 4px 12px 3px grey;
+            border-radius: 5px;
+            border-bottom: 3px solid red;
+            background-color: orange;
+            line-height: 30px;
+            color: #fff;
+        }
+
+        #manner1:active {
+            border-bottom: 1px solid red;
+            box-shadow: 1px 1px 15px 0px grey;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a id="manner1" type="button" href="javascript:void(0);">PUSH ME !</a>
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>

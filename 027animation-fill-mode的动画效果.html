@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>animation fill mode</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        .container {
+            width: 200px;
+            height: 100px;
+            background-color: skyblue;
+            border: 1px solide cyan;
+            animation: change 2s linear 0s 3 alternate forwards;
+        }
+
+        @keyframes change {
+            from {
+                margin-top: 100px;
+            }
+            to {
+                margin-top: 500px;
+                background-color: pink;
+                border: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h4>animation-fill-mode是规定在动画结束后，动画的目标元素对于动画结束时的样式属性的处理。所以动画次数有限，不能是infinte，否则该属性无任何效果。</h4>
+    <div class="container"></div>
+    
+    <script>
+ 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>background</title>
+
+    <style>
+        .original {
+            width: 200px;
+            height: 200px;
+            border: 1px solid skyblue;
+            background-image: url("./img/paint-5.png");
+            background-color: green;
+            background-size: 100%;
+        }
+
+        .container div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid skyblue;
+            background-image: url("./img/paint-5.png");
+            background-color: green;
+            background-size: 300px;
+        }
+
+        .content div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid skyblue;
+            background-image: url("./img/paint-5.png");
+            background-color: green;
+            background-size: 60px;
+        }
+
+        .con1 {
+            background-repeat: no-repeat;
+        }
+
+        .con2 {
+            background-repeat: space;
+        }
+
+        .con3 {
+            background-repeat: round;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="original"></div> <!-- 图片会显示完整，其余的地方会被平铺显示 -->
+    <hr>
+    <div class="container">当容器大小 小于图片时
+        <p>no-repate 图片会按照容器的大小被裁剪，当容器宽度大于图片时，会产生留白</p>
+        <div class="con1"></div>
+        <p>space 图片会按照容器的大小被裁剪，当容器宽度大于图片时，会产生留白</p>
+        <div class="con2"></div>
+        <p>round 图片会跟随容器大小进行非等比例的缩放，以显示完整图片。当容器宽度变化时，图片会被拉伸或压缩</p>
+        <div class="con3"></div>
+    </div>
+    <hr>
+    <div class="content">当容器大小 大于图片时
+        <p>no-repate 图片会按照设定大小显示，background-size 60px</p>
+        <div class="con1"></div>
+        <p>space 在不缩放的前提下尽可能多的重复图片</p>
+        <div class="con2"></div>
+        <p>round 充分利用容器空间，重复n次之后（x/y轴方向）如果剩余空间大于等于imgWidth*50%则重复第n+1次，否则拉伸已经重复的背景图</p>
+        <div class="con3"></div>
+    </div>
+</body>
+
+</html>
+<script>
+
+</script>

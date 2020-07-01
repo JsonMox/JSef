@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+ 
+<body>
+ 
+</body>
+ 
+</html>
+<script>
+    /*
+        沙箱 就是形成一个密闭的环境 不能 主动的影响外界
+        js中 起始就是一个 自执行函数
+    */
+    // (function (window) {
+    // 传入形参 也可以帮助我们压缩 参数的名字
+    (function (w) {
+        // 密闭的环境
+        // var num = 998;
+        // var skill = '霸王金链';
+ 
+        // 封装某些东西
+        var secret = '我有一个小秘密 不告诉你';
+ 
+        function saySec() {
+            console.log('我的秘密就是 我是一条小青龙');
+        }
+        // 对外 提供一些 访问的方式
+        // 设置给window对象
+        // 如果直接访问全局的window 相当于是内部主动的去影响外部的世界
+        w.saySec = saySec;
+    }(window)) // 全局的 window对象 传入
+ 
+    // console.log(num);
+    // console.log(skill);
+    // 访问 saySec
+    window.saySec();
+</script>

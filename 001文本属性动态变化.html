@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width = device-width,inital-scale = 1">
+	<title>001鼠标悬停文本变化</title>
+
+	<script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+</head>
+<style>
+	#container {
+		width: 20%;
+		margin-left: 40%;
+		text-align: center;
+		font-size: 24px;
+	}
+</style>
+<script type="text/javascript">
+	function initE() {
+		var items = document.getElementById("container");
+		var pid = items.getElementsByTagName("p");
+		for (var i = 0; i < pid.length; i++) {
+			var p = pid[i];
+			p.onmouseover = function () {
+				var items = document.getElementById("container");
+				var pid = items.getElementsByTagName("p");
+				for (var i = 0; i < pid.length; i++) {
+					var p = pid[i];
+					if (p == this) {
+						p.style.background = "red";
+						p.style.fontSize = "larger";
+						p.onclick = function () {
+							this.style.fontSize = "larger";
+						}
+					} else {
+						p.style.background = "";
+						p.style.fontSize = "";
+					}
+				}
+			}
+			p.onclick = function () {
+				this.style.fontSize = "larger";
+			}
+		}
+	}
+
+	function arrayOrder() {
+		var array = [5, 3, 1, 31, 4, 23, 2, 3, 4];
+		var temp;
+		var count = 0;
+		for (var i = 0; i < array.length; i++) {
+			for (var j = 0; j < (array.length - i); j++) {
+				if (array[j] > array[j + 1]) {
+					temp = array[j + 1];
+					array[j + 1] = array[j];
+					array[j] = temp;
+				}
+				count++;
+			}
+		}
+		console.log("after the order: " + array + count);
+	}
+</script>
+
+<body onload="initE()">
+	<div id="container">
+		<p id="first" class="itmes"><a>浔阳江头夜送客</a></p>
+		<p id="f2" class="itmes">枫叶荻花秋瑟瑟</p>
+		<p id="f3" class="itmes">主人下马客在船</p>
+		<p class="itmes">举酒欲饮无管弦</p>
+		<p class="itmes">醉不成欢惨将别</p>
+		<p class="itmes">别时茫茫江浸月</p>
+	</div>
+	<button type="button" onclick="arrayOrder()">冒泡排序</button>
+</body>
+
+</html>

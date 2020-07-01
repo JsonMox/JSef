@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>css的蒙版效果</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        $bg-color: hsl(340, 50%, 35%);
+        $path: polygon(53.45% 90.65%, 52.65% 91.1%, 50.45% 91.1%, 48.15% 90.95%, 46.25% 90.8%, 45% 90.3%, 45.3% 89.4%, 46.7% 88.9%, 49.4% 88.6%, 50.3% 88.15%, 50.45% 86.25%, 50.15% 82.2%, 50% 79.4%, 49.85% 76.25%, 50.15% 72.2%, 49.2% 72.5%, 48.45% 72.8%, 47.65% 72.8%, 46.9% 73.3%, 46.4% 73.45%, 45.3% 72.65%, 43.9% 72.65%, 42.8% 72.35%, 41.7% 71.7%, 41.1% 70.65%, 39.85% 70.65%, 38.3% 70.65%, 37.05% 69.7%, 36.7% 68.45%, 37.2% 67.2%, 38.3% 66.55%, 39.7% 65.95%, 40.8% 64.7%, 42.2% 64.05%, 43.6% 63.75%, 45% 63.75%, 46.25% 64.05%, 47.65% 64.85%, 47.05% 62.65%, 46.7% 60.8%, 47.05% 58.45%, 47.65% 56.1%, 48.15% 53.45%, 47.2% 51.1%, 45.8% 48.45%, 44.2% 45.95%, 43.6% 43.6%, 43.45% 41.1%, 40.95% 38.6%, 39.05% 36.55%, 37.5% 34.2%, 36.7% 33.45%, 36.55% 35.3%, 35.95% 37.2%, 34.85% 39.05%, 34.05% 41.1%, 32.8% 42.8%, 31.9% 44.55%, 31.7% 45.45%, 32.2% 46.1%, 32.8% 46.7%, 33.15% 47.35%, 32.95% 47.95%, 32.5% 48.45%, 31.9% 48.75%, 31.1% 49.2%, 30.15% 50.15%, 29.05% 51.1%, 27.8% 52.65%, 26.9% 53.3%, 26.1% 53.45%, 25.65% 53.15%, 26.4% 51.55%, 27.2% 49.7%, 27.5% 47.2%, 28.45% 44.55%, 30% 41.4%, 31.4% 33.75%, 31.7% 32.2%, 32.05% 30.8%, 32.5% 29.55%, 33.15% 28.3%, 33.9% 27.5%, 35.15% 27.2%, 36.4% 27.35%, 37.5% 27.95%, 39.7% 29.55%, 42.65% 31.55%, 46.55% 35.15%, 49.55% 38.9%, 52.65% 38.45%, 55.45% 38.15%, 57.5% 37.8%, 55.8% 36.7%, 53.9% 35.45%, 52.65% 34.7%, 51.7% 34.4%, 50.95% 34.85%, 50.3% 35.15%, 49.85% 35.45%, 49.2% 35.65%, 48.6% 35.45%, 48.15% 34.85%, 47.95% 34.05%, 47.2% 33.15%, 45.8% 32.35%, 44.4% 31.7%, 43.6% 31.25%, 43.75% 30.45%, 44.4% 30.45%, 45.15% 30.65%, 45.95% 30.95%, 46.9% 31.1%, 48.3% 31.1%, 49.85% 31.25%, 51.55% 31.7%, 53.15% 32.5%, 54.85% 32.95%, 57.95% 33.75%, 60.8% 34.05%, 63.9% 35%, 65.95% 35.65%, 67.2% 36.1%, 67.8% 36.7%, 68.45% 37.5%, 68.6% 38.3%, 68.45% 39.05%, 67.95% 39.85%, 66.25% 40.95%, 64.4% 41.9%, 59.55% 43.9%, 54.7% 45%, 56.7% 49.55%, 58.15% 53.15%, 58.9% 55.45%, 59.2% 57.35%, 59.2% 58.9%, 58.75% 60.45%, 57.65% 61.9%, 56.4% 63.15%, 54.4% 64.05%, 53.15% 64.7%, 52.5% 66.4%, 52.95% 68.45%, 54.05% 73.45%, 54.4% 76.1%, 54.55% 79.85%, 54.2% 85.15%, 53.9% 89.55%);
+ 
+        .img {
+            clip-path: $path;
+            background: hsla(340, 70%, 55%, 0.7) url("//s3-us-west-2.amazonaws.com/s.cdpn.io/150150/yoga.png") no-repeat center center;
+            background-blend-mode: multiply;
+            float: left;
+            margin: 1rem 2rem 1rem 0;
+            shape-outside: $path;
+            height: 600px;
+            width: 600px;
+        }
+
+        body {
+            background-color: $bg-color;
+            color: #fff;
+            font-family: "Libre Baskerville", serif;
+            line-height: 1.7;
+            position: relative;
+            width: 100%;
+        }
+
+        main {
+            margin: 0 auto;
+            max-width: 60rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        p {
+            font-size: .9rem;
+            padding-top: 1rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-top: 0;
+            margin-bottom: .5rem;
+            padding-top: 3rem;
+        }
+
+        .title span {
+            color: hsl(350, 50%, 70%);
+            font-size: 2rem;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .intro {
+            color: hsl(30, 80%, 80%);
+            font-style: italic;
+            font-size: 1.15rem;
+        }
+
+
+        @supports (shape-outside: polygon(0 0, 0 100%, 100% 50%, 0 50%)) and (clip-path: polygon(0 0, 0 100%, 100% 50%, 0 50%)) {
+            .title {
+                padding-top: 2rem;
+            }
+        }
+
+        @supports (shape-outside: polygon(0 0, 0 100%, 100% 50%, 0 50%)) {
+            p {
+                margin: 0 0 0 auto;
+                max-width: 38rem;
+            }
+        }
+
+
+        @supports (clip-path: polygon(0 0, 0 100%, 100% 50%, 0 50%)) {
+            .img {
+                padding: 1.23rem;
+            }
+        }
+        @supports (clip-path: polygon(0 0, 0 100%, 100% 50%, 0 50%)) {
+            @supports not (shape-outside: polygon(0 0, 0 100%, 100% 50%, 0 50%)) {
+                .img {
+                    margin-left: -20%;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="img"></div>
+
+        <p class="title">shape-outside with clip-path <span>and background-blend-mode</span></p>
+
+        <p class="intro">The following are a few of my favorite excerpts from the 2005 Stanford University commencement
+            speech given by Steve Jobs.</p>
+
+        <p class="first">“No one wants to die. Even people who want to go to heaven don't want to die to get there. And
+            yet death is the destination we all share. No one has ever escaped it. And that is as it should be, because
+            Death is very likely the single best invention of Life. It is Life's change agent. It clears out the old to
+            make way for the new. Right now the new is you, but someday not too long from now, you will gradually become
+            the old and be cleared away. Sorry to be so dramatic, but it is quite true.</p>
+
+        <p>Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma — which is
+            living with the results of other people's thinking. Don't let the noise of others' opinions drown out your
+            own inner voice. And most important, have the courage to follow your heart and intuition. They somehow
+            already know what you truly want to become. Everything else is secondary.</p>
+
+        <p>Stay Hungry. Stay Foolish.”</p>
+
+    </main>
+    <script>
+
+    </script>
+</body>
+
+</html>

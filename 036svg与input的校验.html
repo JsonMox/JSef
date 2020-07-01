@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML与CSS简单页面效果实例</title>
+
+    <style>
+        .clip {
+            width: 200px;
+            height: 200px;
+            background-image: url("./img/paint-5.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .clip:hover {
+            clip-path: circle(40%);
+            clip-path: ellipse(130px 140px at 10% 20%); 
+            clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width:300px;background:#ccc;">
+        <div style="width:100px;height:100px;float:left;background:Green;"></div>
+        <div style="width:100px;height:100px;float:right;background:Red;"></div>
+    </div>
+
+    <input type="text" placeholder="只能英文、数字，英文开头" onKeyUp = "value = value.replace(/[^a-z0-9]|^[^a-z]/ig,'')" />
+    <input type="text" placeholder="只能输英文、数字和'_'" onKeyUp="value=value.replace(/[\W]/g,'')" />
+
+    <div class="clip"></div>
+</body>
+
+</html>

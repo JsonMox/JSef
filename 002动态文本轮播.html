@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<meta name = "viewport" content = "width = device-width,inital-scale = 1">
+		<title>002文本循环播放</title>
+		<script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+	</head>
+	<style>
+		#container{
+			width:40%;
+			margin-top:10%;
+			margin-left:30%;
+			text-align:center;
+			font-size:24px;
+		}
+		
+		button{
+			height: 33px;
+			width: 80px;
+			border: none;
+			border-radius: 5%;
+			font-size:14px;
+			font-family: "Microsoft YaHei";
+			cursor:wait;
+		}
+		button:hover{
+			background:red;
+		}
+		
+		#quto{
+			border:2px solid red;
+			background:skyblue;
+			color:white;
+			cursor:pointer;
+		}
+	</style>
+	
+	<body>
+		<div id = "container">
+			<label>firstName: </label><input name = "ge" value = "N"/><br>
+			<label>lastName: </label><input name = "ge" value = "v"/>
+			<p id = "quto">when u say nothing at all,lifes like this,that's way it is</p>
+			<button type="button" value="向左滚动" onclick="setValue('left');">向左滚动</button>
+			<button type="button" value="向右滚动" onclick="setValue('right');">向右滚动</button>
+			<button type="button" onclick = "retVal = window.clearInterval( retVal )">STOP</button>
+			<button type="button" onclick = "restart()">START</button>
+			<button onclick = "test()">测试TEST</button>
+			<button onclick = "test1()">获取值</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var di = "left";
+		function  Zmd(){
+			if(di == "left"){
+				var target = $("#quto").text();
+				var obj = document.getElementById("quto");
+				var f = target.charAt(0);
+				var l = target.substring(1, target.length);
+				obj.textContent = l + f;
+			}else if( di = "right" ){
+				var target = $("#quto").text();
+				var obj = document.getElementById("quto");
+				var f = target.substring(0, target.length-1);
+				var l = target.charAt(target.length-1);
+				obj.textContent = l + f;
+			}else{
+				alert("u know nothing,John Snow");
+			}
+		}
+		function setValue(d){
+			di = d;
+		}
+		var retVal = setInterval("Zmd()",100); //每隔0.5秒刷新一次
+		
+		function restart(){
+			retVal = setInterval("Zmd()",100); //每隔0.5秒刷新一次
+		}
+		
+		function test(){
+			var obj = document.getElementById("quto");
+			console.log(obj);
+			obj.textContent  = "KKK";
+			obj.innerText  = "EEE";//不包含HTML的标签内容
+			obj.innerHTML  = "AAA";//包含HTML的标签内容
+		}
+		function test1(){
+			var ge = document.getElementsByName("ge");
+			for(var g = 0; g < ge.length; g++){
+				var kk = ge[g];
+				console.log(kk.value); //获取文本框内的值 .value
+			}
+		}
+	</script>
+</html>

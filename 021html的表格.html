@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>html表格table</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border-left: 1px solid #888;
+            border-top: 1px solid #888;
+        }
+
+        th,
+        td {
+            border-right: 1px solid #888;
+            border-bottom: 1px solid #888;
+            padding: 5px 15px;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        .autofix {
+            height: 80vh;
+            width: 70vw;
+            border: 1px solid cyan;
+            background-image: url('./img/paint-5.png');
+            background-repeat: round;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>month</th>
+                    <th>Saving</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>january</td>
+                    <td>100$</td>
+                </tr>
+                <tr>
+                    <td>february</td>
+                    <td>30$</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>sum</td>
+                    <td>130$</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <p>将尺寸单位设置为vh vw的自适应单位， 可实现 自适应效果</p>
+    <div class="autofix"></div>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

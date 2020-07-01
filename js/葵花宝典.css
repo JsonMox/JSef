@@ -1,0 +1,111 @@
+/*
+ * @Author: kirin.xulong 
+ * @Date: 2020-05-08 10:12:56 
+ * @Last Modified by: kirin.xulong
+ * @Last Modified time: 2020-05-13 14:42:44
+ */
+/* link与@important的区别
+  link是html标签，用于引用css文件
+  @important是css提供，等到页面加载完毕之后再加载由@important引用的样式，优先级比行内样式高
+  注意产生的FOUC，css引用不当造成的页面闪烁
+*/
+
+ /* 盒模型的解释
+  都包括： content  padding  margin  border
+  W3C标准： content中不包括padding和border
+  IE标准：  content中不包括padding和border
+ */
+
+
+/*各版本IE的兼容性写法 */
+/* .eg{
+  background-color: red; // 所有识别 
+  .background-color: red; // IE 6 7 8识别 
+  +background-color: red; // IE 6 7  识别 
+  _background-color: red; // IE 6    识别 
+} */
+/* IE可以使用getAttribute()来获取自定义的属性，而Firefox只能使用getAttribute() */
+
+/*超链接被访问后hover的样式不再出现，
+  解决方法是调整CSS的样式排列顺序：L V H A
+L     a:link{}   
+V     a:vistited{}
+H     a:hover{}
+A     a:active{}
+*/
+
+/* BFC规范的理解
+  BFC 块级格式化上下文
+  相当于创建了一个 独立布局的盒子，盒内的元素样式不会影响到盒子外部的元素
+*/
+
+/* CSS sprites
+ 其实就是把网页中的一些背景图片整合成一张图片
+ 利用background-repated  background-position  background-image 进行控制不同位置显示图片的不同部分
+ 减少很多的图片请求，减少内存，提高页面加载的速度
+ 未来而言，由于http2的出现，不需要考虑
+*/
+
+/* 上下margin的重合问题
+  ie和firefox都存在，相邻的div的margin-left与margin-right不会重合，但是margin-top与margin-bottom会重合
+  解决方法：
+  相邻的两个div同时使用margin-top或margin-bottom
+*/
+
+/* 浮动的理解
+  浮动元素会脱离文档流，不占据空间。
+  包裹性：:float会改变属性display的计算值，产生包裹性
+  <style>
+			.container{
+				border: 1px solid green;
+				padding: 30px;
+				background-color: green;
+				background-clip: content-box;
+			}
+			.fl{
+				float: left;
+			}
+  </style>
+  <div class="container fl">内容</div>
+
+  破坏性：：浮动元素被清除，但父级元素还存在于文档流中，可能导致父级元素高度塌陷，不能被浮动元素撑大
+
+  如何清除
+  1.使用空标签 定义css为 clear：both  缺点：增加无意义的标签 会产生margin重叠的问题
+  2.使用overflow 为父级元素添加 overflow:auto; zoom:1;  zoom：1；是为了兼容IE6
+  3.使用after伪对象清除浮动 注意必须要为 需要清除浮动的元素的伪对象中设置height：0；
+  否则该元素会比实际高出若干像素
+
+  总结：
+  浮动造成的问题：
+  1.父级元素高度无法被撑开，影响与父级同级的元素
+  2.与浮动元素同级的非浮动元素会紧跟其后
+  3.如果不是第一个元素浮动，该元素之前的元素也需要浮动，影响页面布局结构
+  解决：
+  1.额外标签 <div style="clear:both;"></div>
+  2.after伪类
+  #parent：after{
+    content:".";
+    height: 0;
+    visibility: hidden;
+    display: block;
+    clear: both;
+  }
+
+  
+  .clearfix::before,
+  .clearfix::after{
+      content: ".";
+      display: block;
+      height: 0;
+      overflow: hidden;
+  }
+  .clearfix:after{
+      clear: both;
+  }
+  .clearfix {
+      zoom: 1; //用于兼容 < IE8
+  }
+
+  3.父级元素添加 overflow： auto或者hidden
+*/

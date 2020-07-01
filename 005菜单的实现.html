@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<meta name = "viewport" content = "width = device-width,inital-scale = 1">
+		<title>005菜单的实现</title>
+		<script type="text/javascript" src = "./js/jquery-3.4.1.min.js"></script>
+	</head>
+	<style>
+		
+	</style>
+	
+	<body>
+		<div id = "div">
+			
+		</div>
+		<script type="text/javascript">
+			function renderMenu(menu, parent) {
+				if (menu.hasOwnProperty("url")){
+					<!-- var el = $('<span>'+'<a href="' +menu.url+'">' + menu.name + '</a>'+'</span>'); -->
+					var el = $('<span>'+'<em>' + menu.name + '</em>'+'</span>');
+					parent.append(el);
+				}else{
+					var el = $('<span>' + menu.name + '</span>');
+					parent.append(el);
+				}
+				
+				if (!menu.hasOwnProperty("contents")) { 
+					return parent;
+				}
+
+				var ul = $('<ul/>');
+				for (var i = 0; i < menu.contents.length; ++i) {
+					var li = $('<li/>');
+					renderMenu(menu.contents[i], li);
+					ul.append(li);
+				}
+
+				parent.append(ul);
+				return parent;
+			}
+
+			function render(data) {
+				var div = $('<div/>');
+				return renderMenu(data, div);
+			}
+
+			$(function () {
+				var dataFir = {
+					"type": "directory", 
+					"name": "haha", 
+					"contents": [
+						{"type": "file", "name": "2048"},
+						{"type": "file", "name": "1024"},
+						{"type": "directory", "name": "128", "url": "", "contents": 
+							[
+								{"type": "file", "name": "3A03FC.xz", "url": ""}
+							]
+						},
+						{"type": "file", "name": "512"},
+						{"type": "directory", "name": "256", "contents": 
+							[
+								{"type": "file", "name": "3A03FC.xz", "url": "www.baidu.com"}
+							]
+						}
+					]};
+				var dataSec = {
+					"type": "directory", 
+					"name": "haha", 
+					"contents": [
+						{"type": "file", "name": "2048"},
+						{"type": "file", "name": "1024"},
+						{"type": "directory", "name": "128", "contents": 
+							[
+								{"type": "file", "name": "3A03FC.xz"}
+							]
+						},
+						{"type": "file", "name": "512"},
+						{"type": "directory", "name": "256", "contents": 
+							[
+								{"type": "file", "name": "3A03FC.xz"}
+							]
+						}
+					]};
+				var menuFir = render(dataFir);
+				var menuSec = render(dataSec);
+				$("#div").append(menuFir);
+				$("#div").append(menuSec);
+				$("#div ul").css("display", "none");
+				$("#div span").on("click", function () {
+					$(this).next().toggle();
+				});
+				$("#div em").on("click", function () {
+					alert("123");
+				});
+			});
+		</script>
+	</body>
+</html>

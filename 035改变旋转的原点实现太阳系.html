@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>galaxy</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        body {
+            background: black;
+        }
+
+        .galaxy {
+            width: 1300px;
+            height: 1300px;
+            position: relative;
+        }
+
+        .galaxy div {
+            position: absolute;
+        }
+
+        div[class*=track] {
+            border: 1px solid #555;
+            margin-left: -3px;
+            margin-top: -3px;
+        }
+
+        .sun {
+            background: url("./img/sun.png") 0 0 no-repeat;
+            width: 100px;
+            height: 100px;
+            left: 600px;
+            top: 600px;
+            animation: rotation 60s linear infinite;
+        }
+
+        .mercury {
+            background: url("./img/mercury.png") 0 0 no-repeat;
+            width: 50px;
+            height: 50px;
+            left: 700px;
+            top: 625px;
+            transform-origin: -50px 25px;
+            animation: rotation 2.4s linear infinite;
+        }
+
+        .mercury-track {
+            width: 150px;
+            height: 150px;
+            left: 575px;
+            top: 575px;
+            border-radius: 75px;
+        }
+
+        .venus {
+            background: url("./img/venus.png") 0 0 no-repeat;
+            width: 60px;
+            height: 60px;
+            left: 750px;
+            top: 620px;
+            animation: rotation 6.16s linear infinite;
+            transform-origin: -100px 30px;
+        }
+
+        .venus-track {
+            width: 260px;
+            height: 260px;
+            left: 520px;
+            top: 520px;
+            border-radius: 130px;
+        }
+
+        .earth {
+            background: url("./img/earth.png") 0 0 no-repeat;
+            width: 60px;
+            height: 60px;
+            top: 620px;
+            left: 805px;
+            animation: rotation 10s linear infinite;
+            transform-origin: -155px 30px;
+        }
+
+        .earth-track {
+            width: 370px;
+            height: 370px;
+            border-radius: 185px;
+            left: 465px;
+            top: 465px;
+        }
+
+        .mars {
+            background: url("./img/mars.png") 0 0 no-repeat;
+            width: 50px;
+            height: 50px;
+            top: 625px;
+            left: 865px;
+            animation: rotation 19s linear infinite;
+            transform-origin: -215px 25px;
+        }
+
+        .mars-track {
+            width: 480px;
+            height: 480px;
+            border-radius: 240px;
+            left: 410px;
+            top: 410px;
+        }
+
+        .jupiter {
+            background: url("./img/jupiter.png") 0 0 no-repeat;
+            width: 80px;
+            height: 80px;
+            top: 610px;
+            left: 920px;
+            animation: rotation 118s linear infinite;
+            transform-origin: -270px 40px;
+        }
+
+        .jupiter-track {
+            border-radius: 310px;
+            width: 620px;
+            height: 620px;
+            left: 340px;
+            top: 340px;
+        }
+
+        .saturn {
+            background: url("./img/saturn.png") 0 0 no-repeat;
+            width: 120px;
+            height: 80px;
+            top: 610px;
+            left: 1000px;
+            animation: rotation 295s linear infinite;
+            transform-origin: -350px 40px;
+        }
+
+        .saturn-track {
+            border-radius: 410px;
+            width: 820px;
+            height: 820px;
+            left: 240px;
+            top: 240px;
+        }
+
+        .uranus {
+            background: url("./img/uranus.png") 0 0 no-repeat;
+            width: 80px;
+            height: 80px;
+            top: 610px;
+            left: 1120px;
+            animation: rotation 840s linear infinite;
+            transform-origin: -470px 40px;
+        }
+
+        .uranus-track {
+            border-radius: 510px;
+            width: 1020px;
+            height: 1020px;
+            top: 140px;
+            left: 140px;
+        }
+
+        .pluto {
+            background: url("./img/pluto.png") 0 0 no-repeat;
+            width: 70px;
+            height: 70px;
+            top: 615px;
+            left: 1210px;
+            animation: rotation 1648s linear infinite;
+            transform-origin: -560px 35px;
+        }
+
+        .pluto-track {
+            border-radius: 595px;
+            width: 1190px;
+            height: 1190px;
+            left: 55px;
+            top: 55px;
+        }
+
+        @keyframes rotation {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="galaxy">
+        <div class='sun'></div>
+        <div class='mercury-track'></div>
+        <div class='mercury'></div>
+        <div class='venus-track'></div>
+        <div class='venus'></div>
+        <div class='earth-track'></div>
+        <div class='earth'></div>
+        <div class='mars-track'></div>
+        <div class='mars'></div>
+        <div class='jupiter-track'></div>
+        <div class='jupiter'></div>
+        <div class='saturn-track'></div>
+        <div class='saturn'></div>
+        <div class='uranus-track'></div>
+        <div class='uranus'></div>
+        <div class='pluto-track'></div>
+        <div class='pluto'></div>
+    </div>
+    <div style="width: 200px; height: 200px; border: 1px solid red; border-radius: 50%;"></div>
+
+    <script>
+
+    </script>
+</body>
+
+</html>

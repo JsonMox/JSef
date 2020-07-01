@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset = "utf8">
+		<meta name = "viewport" content = "width = device-width, inital-scal = 1">
+		<title>003BlackStar</title>
+		<script type="text/javascript" src = "./js/jquery-3.4.1.min.js"></script>
+	</head>
+	<script type="text/javascript">
+		
+		function initEvent() {
+			var rating = document.getElementById("rating");
+			var tds = rating.getElementsByTagName("td");
+			for (var i =0; i < tds.length; i++) {
+				var td = tds[i];
+				td.style.cursor ='pointer'; //设置鼠标显示形式，pointer为手指，wait 为加载中的圈圈
+				td.onmouseover =function() { 
+					var rating = document.getElementById("rating"); 
+					var tds = rating.getElementsByTagName("td");
+					/* 
+					**鼠标移动 相应的star会变化，其他不变化
+					for (var i =0; i < tds.length; i++) { //遍历
+						var td = tds[i];
+						if(td == this){
+							td.innerText = '★';
+						}
+						else{
+							td.innerText ='☆';
+						}
+					} */
+					var index = indexOf(tds, this); //获取鼠标当前为值
+					//console.log(index);
+					for (var i =0; i <= index; i++) { //遍历鼠标之前的值
+						tds[i].innerText ='★'; //将其赋值为“★”
+					}
+					for (var i = index+1; i <tds.length; i++) { //遍历鼠标之后的值
+						tds[i].innerText ='❄'; //将其赋值为“☆“
+					}
+				};
+			}
+		}
+		
+		function indexOf(arr, element) { //传入array数组和当前值
+			for (var i =0; i < arr.length; i++) {
+				if (arr[i] == element) { //第i个值等于当前值
+					return i; //返回i
+				}
+			}
+			//return-1;
+		}
+	</script>
+	<body onload="initEvent()">
+		<div style = "width:20%;margin-top:10%;margin-left:40%;font-size:60px">
+			<table id="rating">
+				<tr>
+					<td>☆</td>
+					<td>☆</td>
+					<td>☆</td>
+					<td>☆</td>
+					<td>☆</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

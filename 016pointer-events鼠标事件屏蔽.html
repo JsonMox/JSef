@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>for test, the deep ocean</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        .wsa a {
+            pointer-events: none;
+        }
+
+        a::after {
+            content: ""attr(href)"";
+        }
+
+        .top {
+            width: 100px;
+            height: 90px;
+            position: absolute;
+            top: 0;
+            left: 65px;
+            background: yellow;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="menu-down">
+        <p class="sa"><a href="https：//html.cn">使超链接不使能</a></p>
+        <p class="aa"><a href="https：//html.cn">鼠标会穿透上层div</a></p>
+        <p><a href="javascript:void(0);">超链接可以点击，跳转禁用</a></p>
+    </div>
+
+    <div class="top"></div>
+</body>
+
+</html>

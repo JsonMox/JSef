@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>for test, the deep ocean</title>
+
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        @media print {
+            body{
+                display: none;
+            }
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0%;
+            padding: 0%;
+            /* display: flex; */
+            align-items: center;
+            justify-content: center;
+        }
+
+        body style {
+            display: block;
+            padding: 0.6em 0.8em;
+            border: 1px dashed #ccc;
+            background-color: #f5f5f5;
+            color: #000;
+            font-family: Monaco, monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #moon {
+            width: 80px;
+            height: 80px;
+            rotate: 90deg;
+            border-radius: 50%;
+            box-shadow: 13px 2px 0 0 red;
+        }
+
+        .rect {
+            width: 400px;
+            border: 1px solid khaki;
+        }
+
+        #domonn {
+            height: 1200px;
+        }
+
+        #back {
+            width: 300px;
+            height: 30px;
+            background-color: gray;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        #force {
+            width: 270px;
+            height: 30px;
+            background-color: red;
+            border-radius: 20px;
+            color: #fff;
+            line-height: 30px;
+        }
+
+        #domon {
+            width: 100px;
+            height: 100px;
+            border-top: 2px solid red;
+            border-left: 2px solid red;
+            border-radius: 50%;
+            transition: all 300ms ease 0s;
+
+            animation: domn 3s linear 0s 2;
+        }
+
+        @keyframes domn {
+            from {
+
+                transform: rotate(0deg);
+            }
+
+            to {
+
+                transform: rotate(360deg);
+            }
+        }
+
+        a::after {
+            content: "("attr(href)")";
+        }
+
+        dot {
+            display: inline-block;
+            height: 1em;
+            line-height: 1;
+            text-align: left;
+            vertical-align: -.25em;
+            overflow: hidden;
+        }
+
+        dot::before {
+            display: block;
+            content: '...\A..\A.';
+            white-space: pre-wrap;
+            animation: dot 2s infinite step-start both;
+        }
+
+        @keyframes dot {
+            33% {
+                transform: translateY(-2em);
+            }
+
+            66% {
+                transform: translateY(-1em);
+            }
+        }
+
+        #mybtn {
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+            box-shadow: 0;
+            border: none;
+        }
+
+        #mybtn:active {
+            width: 140px;
+            height: 140px;
+            background: red;
+            transform: rotateX(-180deg);
+            box-shadow: 2px 2px 0 0 green;
+            border: none;
+        }
+
+        #nite1::after {
+            display: block;
+            content: " ";
+
+        }
+
+        #myPic {
+            width: 100px;
+            height: 20px;
+            background-image: url("./img/1.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    </style>
+
+</head>
+
+<body>
+    <style contenteditable>
+        .test_image {
+            padding: 3px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+    </style>
+    <input placeholder="123" disabled />
+    <p style="white-space: nowrap; overflow: hidden;width: 55%; 
+    text-overflow: ellipsis;">the real loneliness is in the crowd, when u face many framily faces, suddenly, l lost my
+        language, deep
+        as drowing in the blue ocean, cant breaththe real loneliness is in the crowd, when u face many framily faces,
+        suddenly, l lost my language, deep
+        as drowing in the blue ocean, cant breath</p>
+
+    <div id="moon"></div>
+    <button id="mybtn">热区</button>
+    <img id="im" src="./img/1.png" loading="lazy">
+    <p class="test_image">the deep ocean</p>
+    <input type="checkbox" value="东" />东
+    <input type="checkbox" value="西" />西
+    <input type="checkbox" value="东" />南
+    <input type="checkbox" value="西" />北
+    <a href="Zuulote://">open the WeChart</a>
+
+    <div class="rect">
+        <blockquote cite="www.baidu.com">
+            <p>the real loneliness is in the crowd, when u face many framily faces, suddenly, l lost my language, deep
+                as drowing in the blue ocean, cant breath</p>
+        </blockquote>
+    </div>
+
+    <a href='http://www.baidu.com' id='a1' onclick='test(this)'>RPG</a>
+
+    <div id="domon"></div>
+    <div id="back">
+        <div id="force">90%</div>
+    </div>
+    <span id="nite1">将进酒</span>
+    <span id="nite2">杯莫停</span>
+    <ruby>
+        汉 <rt>Han</rt>
+        字 <rp>(</rp>
+        <rt>zi</rt>
+        <rp>)</rp>
+    </ruby>
+    <div id="myPic"></div>
+    <!--  <div style="display: block;">
+        <iframe src="map.html" width="716px"  height="553px"></iframe>
+    </div> -->
+
+    <from>
+        <select name="a" size="1" id="obj" onclick="getVal()">
+            <option value="a">1</option>
+            <option value="b">2</option>
+            <option value="c">3</option>
+        </select>
+    </from>
+
+    正在加载中<dot>...</dot>
+
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+    <script>
+        function test(obj) {
+            alert(this.getAttribute("href"));
+        }
+        // window.addEventListener("scroll", function () {
+        //     var px = document.getElementById("im").getBoundingClientRect().top;
+        //     if (px < 622) {
+        //         document.getElementById("im").setAttribute("src", "./img/2.png");
+        //     }
+        // })
+
+        function getVal() {
+            let obj = document.getElementById("obj");
+            console.log(obj.options[obj.selectedIndex].text);
+            console.log(obj.text);
+        }
+    </script>
+</body>
+
+</html>

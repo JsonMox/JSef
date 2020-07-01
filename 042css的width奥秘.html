@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .box {
+        background-color: #f0f3f9;
+        padding: 10px;
+        margin: 10px 0 20px;
+        overflow: hidden;
+    }
+
+    .inline-block {
+        display: inline-block;
+    }
+
+    .min-content {
+        width: -webkit-min-content;
+        width: -moz-min-content;
+        width: min-content;
+    }
+
+    .max-content {
+        width: -webkit-max-content;
+        width: -moz-max-content;
+        width: max-content;
+    }
+
+    .fill-available {
+        width: -webkit-fill-available;
+        width: -moz-fill-available;
+        width: fill-available;
+    }
+
+    .fil-content {
+        width: -webkit-fil-content;
+        width: -moz-fil-content;
+        width: fil-content;
+    }
+</style>
+
+<body>
+    <strong>display:inline-block;</strong><br>
+    <div class="box inline-block">
+        <img src="./img/paint-5.png">
+        <p>display:inline-block具有收缩特性，但这里宽度随文字。而width:min-content随图片。默认由文字宽度决定，当父级容器宽度发生变化时，文字会跟随变化。宽度由文字决定</p>
+    </div>
+    <br>
+    <strong>width: min-content;</strong><br>
+    <div class="box min-content">
+        <img src="./img/paint-5.png">
+        <p>display:inline-block具有收缩特性，但这里宽度随文字。而width:min-content随图片。默认由图片宽度决定，当父级容器宽度发生变化时，文字不会跟随变化。宽度由图片决定</p>
+    </div>
+    <br>
+    <strong>width: max-content;</strong><br>
+    <div class="box max-content">
+        <img src="./img/paint-5.png">
+        <p>display:inline-block具有收缩特性，但这里宽度随文字。而width:min-content随图片。默认由文字宽度决定，当父级容器宽度发生变化时，文字不会跟随变化。宽度由文字决定</p>
+    </div>
+    <br>
+    <strong>width: fill-available;</strong><br>
+    <div class="box fill-available">
+        <img src="./img/paint-5.png">
+        <p>display:inline-block具有收缩特性，但这里宽度随文字。而width:min-content随图片。 默认为100%width,当父级容器宽度发生变化时，文字和图片都会变化</p>
+    </div>
+    <br>
+    <strong>width: fil-content;</strong><br>
+    <div class="box fil-content">
+        <img src="./img/paint-5.png">
+        <p>display:inline-block具有收缩特性，但这里宽度随文字。而width:min-content随图片。默认为100%width,当父级容器宽度发生变化时，文字和图片都会变化</p>
+    </div>
+</body>
+
+</html>

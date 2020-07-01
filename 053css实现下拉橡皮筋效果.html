@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>橡皮筋效果</title>
+
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .text {
+            text-transform: uppercase;
+        }
+
+        .btn {
+            width: 200px;
+            height: 200px;
+            margin: 40px 0;
+            background-color: coral;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+
+        }
+
+        .box {
+            width: 240px;
+            height: 200px;
+            background-color: cadetblue;
+            margin: 0 auto;
+
+        }
+
+        .box:hover {
+            animation: rubberBand 1s;
+        }
+
+        .btn:hover {
+            animation: rubberBand 1s;
+        }
+
+        .text:hover {
+            animation: rubberBand 1s;
+        }
+
+        @keyframes rubberBand {
+            0% {
+                transform: scale3d(1, 1, 1);
+            }
+
+            35% {
+                transform: scale3d(1.25, .75, 1);
+            }
+
+            45% {
+                transform: scale3d(.75, 1, 1);
+            }
+
+            60% {
+                transform: scale3d(1.2, .8, 1);
+            }
+
+            75% {
+                transform: scale3d(1.05, .95, 1);
+            }
+
+            100% {
+                transform: scale3d(1, 1, 1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <h1 class="text">Rubber Band Animation</h1>
+            <button class="btn">Hover me </button>
+            <div class="box"></div>
+        </div>
+    </body>
+    
+</body>
+
+</html>
