@@ -2,7 +2,7 @@
  * @Author: kirin.xulong 
  * @Date: 2020-04-09 09:08:10 
  * @Last Modified by: kirin.xulong
- * @Last Modified time: 2020-07-01 08:35:02
+ * @Last Modified time: 2020-07-02 08:27:57
  */
 
 //14 jsonp 跨域原理
@@ -522,3 +522,14 @@ B.prototype = new A(7);
 var a = new A(2);
 var b = new B(3);
 delete b.x;
+
+
+/* 函数执行 */
+var foo = {n:1};
+(function() {
+    console.log(foo.n);
+    foo.n = 3;
+    var foo = {n:2};
+    console.log(foo.n);
+})(foo);
+console.log(foo.n);
