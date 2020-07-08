@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>110blank</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+    <script>
+        window.onload = function () {
+            let cans = document.getElementById("myCanvas");
+            let ctx = cans.getContext("2d");
+
+            let text = "要显示的字符串文本";
+            ctx.font = "bold 25px KaiTi";
+            ctx.fillStyle = "#7C0DFA";
+            ctx.fillText(text, 30, 50);
+
+            ctx.globalAlpha = 0.5; //透明度设置为一半：0.5
+            ctx.fillText(text, 30, 100);
+
+        }
+    </script>
+</body>
+
+</html>
