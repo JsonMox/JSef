@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>110blank</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        .content{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button class="container" onclick="re()">btn</button>
+        <div class="content">不改初心对其的样式问</div>
+    </div>
+    
+    <script>
+        function resetFontSize(divWord, maxWidth, minSize, maxSize) {
+            divWord.css('font-size', minSize + "px");
+            for (var i = minSize; i < maxSize; i++) {
+                if ($(divWord).width() > maxWidth) {
+                    $(divWord).css('font-size', (i - 2) + 'px');
+                    break;
+                } else {
+                    $(divWord).css('font-size', i + 'px');
+                }
+            }
+        }
+
+        function re() {
+            resetFontSize($('.content'), 40,8,17);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>110blank</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        .div {
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            /*防止图片放大后溢出div*/
+        }
+
+        .img {
+            width: 400px;
+            height: 400px;
+            transition: all 0.3s ease-out;
+            /*ease-out 减速、慢慢结束*/
+            -webkit-transition: all 0.3s ease-out;
+        }
+
+        .div:hover .img {
+            z-index: 5;
+            transform: scale(1.5);
+            /*把图片放大1.5倍*/
+            -webkit-transform: scale(1.5);
+        }
+        .txt {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div">
+        <img class="img" src="./img/paint-5.png">
+    </div>
+    <p class="txt">when u say nothing at all</p>
+    <script>
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script>
+        var mycards = [
+            //数值从大到小,方便后面牌排序
+            //大    小    王
+            302, 301,
+            //黑桃 红桃 梅花 方块
+            224, 223, 222, 221, //2
+            214, 213, 212, 211, //A
+            134, 133, 132, 131, //K
+            124, 123, 122, 121, //Q
+            114, 113, 112, 111, //J
+            104, 103, 102, 101, //10
+            94, 93, 92, 91, //9
+            84, 83, 82, 81, //8
+            74, 73, 72, 71, //7
+            64, 63, 62, 61, //6
+            54, 53, 52, 51, //5
+            44, 43, 42, 41, //4
+            34, 33, 32, 31 //3
+        ];
+
+        var flag = 1; //全局变量
+
+        for (var i = 0; i < 50; i++) //洗牌50次
+        {
+            var a = parseInt(Math.random() * 54); //随机产生0-53的整数赋给a
+            var b = parseInt(Math.random() * 54); //随机产生0-53的整数赋给b
+            if (a != b) {
+                var x = mycards[a];
+                mycards[a] = mycards[b];
+                mycards[b] = x;
+            }
+        }
+
+        var cards1 = mycards.slice(0, 17); //玩家1的17张牌
+        var cards2 = mycards.slice(17, 34); //玩家2的17张牌
+        var cards3 = mycards.slice(34, 51); //玩家3的17张牌
+        var cards4 = mycards.slice(51); //地主的3张牌
+
+        var a = parseInt(Math.random() * 3); //产生一个0~2的随机数
+        var b = a + 1 //得到玩家号
+
+        //洗牌方法
+        function start() {
+
+            //玩家1-------------------------------------------------------------------
+            for (var j = 0; j < cards1.length; j++) {
+                var div = document.createElement("div"); //创建一个DIV元素
+                div.style.backgroundImage = "url(card/" + cards1[j] + ".jpg)";
+                div.style.width = "105px"; //设置宽度
+                div.style.height = "150px"; //设置高度	
+                div.style.position = "absolute"; //设置绝对定位	
+                div.style.marginLeft = (20 * flag++) + "px" //每张牌离前一张牌有20px距离 					
+                div.style.marginTop = "20px";
+                div.onclick = function () {
+                    var y = this.style.marginTop;
+
+                    if (y == "20px") {
+                        this.style.marginTop = "10px"; //牌向上移
+                    } else {
+                        this.style.marginTop = "20px"; //牌回来原始位置
+                    }
+                }
+                document.body.appendChild(div); //将创建的div元素追加到网页的body中去
+
+            }
+            flag = 1; //初始化flag为1
+
+            //玩家2-------------------------------------------------------------------
+            for (var j = 0; j < cards2.length; j++) {
+                var div = document.createElement("div"); //创建一个DIV元素
+                div.style.backgroundImage = "url(card/" + cards2[j] + ".jpg)";
+                div.style.width = "105px"; //设置宽度
+                div.style.height = "150px"; //设置高度	
+                div.style.position = "absolute"; //设置绝对定位	
+                div.style.marginLeft = (20 * flag++) + "px" //每张牌离前一张牌有20px距离 					
+                div.style.marginTop = "190px";
+                div.onclick = function () {
+                    var y = this.style.marginTop;
+
+                    if (y == "190px") {
+                        this.style.marginTop = "180px"; //牌向上移
+                    } else {
+                        this.style.marginTop = "190px"; //牌回来原始位置
+                    }
+                }
+
+                document.body.appendChild(div); //将创建的div元素追加到网页的body中去
+            }
+            flag = 1;
+
+            //玩家3-------------------------------------------------------------------
+            for (var j = 0; j < cards3.length; j++) {
+                var div = document.createElement("div"); //创建一个DIV元素
+                div.style.backgroundImage = "url(card/" + cards3[j] + ".jpg)";
+                div.style.width = "105px"; //设置宽度
+                div.style.height = "150px"; //设置高度					
+                div.style.position = "absolute"; //设置绝对定位	
+                div.style.marginLeft = (20 * flag++) + "px" //每张牌离前一张牌有20px距离 					
+                div.style.marginTop = "360px";
+                div.onclick = function () {
+                    var y = this.style.marginTop;
+
+                    if (y == "360px") {
+                        this.style.marginTop = "350px"; //牌向上移
+                    } else {
+                        this.style.marginTop = "360px"; //牌回来原始位置
+                    }
+                }
+                document.body.appendChild(div); //将创建的div元素追加到网页的body中去
+
+            }
+            flag = 30; //初始化flag为30，让地主牌和玩家二并排且中间有间隔
+
+            //地主牌还没翻牌-------------------------------------------------------------------
+            for (var j = 0; j < 3; j++) {
+                var div = document.createElement("div"); //创建一个DIV元素
+                div.style.backgroundImage = "url(card/BEIMIAN.PNG)";
+                div.style.width = "105px"; //设置宽度
+                div.style.height = "150px"; //设置高度					
+                div.style.position = "absolute"; //设置绝对定位	
+                div.style.marginLeft = (20 * flag++) + "px" //每张牌离前一张牌有20px距离 					
+                div.style.marginTop = "190px";
+                document.body.appendChild(div); //将创建的div元素追加到网页的body中去
+            }
+        }
+
+        //翻牌后追加到玩家后，并且销毁未翻开时的三张
+        var flag2 = 18;
+
+        function upCards() {
+            /*var a = parseInt(Math.random() * 3);//产生一个1~3的随机数
+            var b = a + 1;//随机到玩家号*/
+            alert("恭喜玩家" + b + "抢到了地主");
+            for (var j = 0; j < cards4.length; j++) {
+                var div = document.createElement("div"); //创建一个DIV元素
+                div.style.backgroundImage = "url(card/" + cards4[j] + ".jpg)";
+                div.style.width = "105px"; //设置宽度
+                div.style.height = "150px"; //设置高度					
+                div.style.position = "absolute"; //设置绝对定位	
+                div.style.marginLeft = (20 * flag2++) + "px" //每张牌离前一张牌有20px距离 	
+                div.style.marginTop = ((170 * a) + 20) + "px";
+
+                if (b == 1) {
+                    div.onclick = function () {
+                        var y = this.style.marginTop;
+
+                        if (y == "20px") {
+                            this.style.marginTop = "10px"; //牌向上移
+                        } else {
+                            this.style.marginTop = "20px"; //牌回来原始位置
+                        }
+                    }
+                } else if (b == 2) {
+                    div.onclick = function () {
+                        var y = this.style.marginTop;
+
+                        if (y == "190px") {
+                            this.style.marginTop = "180px"; //牌向上移
+                        } else {
+                            this.style.marginTop = "190px"; //牌回来原始位置
+                        }
+                    }
+                } else {
+                    div.onclick = function () {
+                        var y = this.style.marginTop;
+
+                        if (y == "360px") {
+                            this.style.marginTop = "350px"; //牌向上移
+                        } else {
+                            this.style.marginTop = "360px"; //牌回来原始位置
+                        }
+                    }
+                }
+                document.body.appendChild(div); //将创建的div元素追加到网页的body中去
+            }
+
+            //用空白覆盖原来的三张地主牌
+            var flag3 = 30
+            for (var j = 0; j < 3; j++) {
+                var div = document.createElement("div"); //创建一个DIV元素
+                div.style.backgroundImage = "url(card/KONGBAI.PNG)";
+                div.style.width = "105px"; //设置宽度
+                div.style.height = "150px"; //设置高度					
+                div.style.position = "absolute"; //设置绝对定位	
+                div.style.marginLeft = (20 * flag3++) + "px" //每张牌离前一张牌有20px距离 					
+                div.style.marginTop = "190px";
+                document.body.appendChild(div); //将创建的div元素追加到网页的body中去
+            }
+        }
+
+        //整理牌(将玩家的牌按牌面大小排序)
+        function sortCards() {
+            //清除之前网页中所有的div元素?????????
+            var divs = document.getElementsByTagName("div");
+            for (var i = 0; i < divs.length; i++) {
+                document.body.removeChild(divs[0]);
+                i--;
+            }
+
+            if (b == 1) {
+                var newCards1 = cards1.concat(cards4);
+                var newCards2 = cards2;
+                var newCards3 = cards3
+                //如果玩家1抢到地主,则将地主三张牌添加到玩家1中
+            } else if (b == 2) {
+                var newCards1 = cards1;
+                var newCards2 = cards2.concat(cards4);
+                var newCards3 = cards3;
+                //如果玩家2抢到地主,则将地主三张牌添加到玩家2中
+            } else {
+                var newCards1 = cards1;
+                var newCards2 = cards2;
+                var newCards3 = cards3.concat(cards4);
+                //如果玩家3抢到地主,则将地主三张牌添加到玩家3中
+            }
+
+            //将玩家1的牌从大到小排序(冒泡降序排序)
+            for (var i = 0; i < newCards1.length; i++) {
+                for (var j = 0; j < newCards1.length - 1 - i; j++) {
+                    if (newCards1[j] < newCards1[j + 1]) {
+                        newCards1[j] = newCards1[j] + newCards1[j + 1];
+                        newCards1[j + 1] = newCards1[j] - newCards1[j + 1];
+                        newCards1[j] = newCards1[j] - newCards1[j + 1];
+                    }
+                }
+            }
+
+            //将玩家2的牌从大到小排序(冒泡降序排序)
+            for (var i = 0; i < newCards2.length; i++) {
+                for (var j = 0; j < newCards2.length - 1 - i; j++) {
+                    if (newCards2[j] < newCards2[j + 1]) {
+                        newCards2[j] = newCards2[j] + newCards2[j + 1];
+                        newCards2[j + 1] = newCards2[j] - newCards2[j + 1];
+                        newCards2[j] = newCards2[j] - newCards2[j + 1];
+                    }
+                }
+            }
+
+            //将玩家3的牌从大到小排序(冒泡降序排序)
+            for (var i = 0; i < newCards3.length; i++) {
+                for (var j = 0; j < newCards3.length - 1 - i; j++) {
+                    if (newCards3[j] < newCards3[j + 1]) {
+                        newCards3[j] = newCards3[j] + newCards3[j + 1];
+                        newCards3[j + 1] = newCards3[j] - newCards3[j + 1];
+                        newCards3[j] = newCards3[j] - newCards3[j + 1];
+                    }
+                }
+            }
+
+            flag = 1; //初始化flag为1
+            //玩家1整理后的牌-------------------------------------------------------------------
+            for (var j = 0; j < newCards1.length; j++) {
+                var div = document.createElement("div"); //创建一个DIV元素
+                div.style.backgroundImage = "url(card/" + newCards1[j] + ".jpg)";
+                div.style.width = "105px"; //设置宽度
+                div.style.height = "150px"; //设置高度	
+                div.style.position = "absolute"; //设置绝对定位	
+                div.style.marginLeft = (20 * flag++) + "px" //每张牌离前一张牌有20px距离 					
+                div.style.marginTop = "20px";
+                div.onclick = function () {
+                    var y = this.style.marginTop;
+
+                    if (y == "20px") {
+                        this.style.marginTop = "10px"; //牌向上移
+                    } else {
+                        this.style.marginTop = "20px"; //牌回来原始位置
+                    }
+                }
+                document.body.appendChild(div); //将创建的div元素追加到网页的body中去
+            }
+            flag = 1; //初始化flag为1
+
+            //玩家2整理后的牌-------------------------------------------------------------------
+            for (var j = 0; j < newCards2.length; j++) {
+                var div = document.createElement("div"); //创建一个DIV元素
+                div.style.backgroundImage = "url(card/" + newCards2[j] + ".jpg)";
+                div.style.width = "105px"; //设置宽度
+                div.style.height = "150px"; //设置高度	
+                div.style.position = "absolute"; //设置绝对定位	
+                div.style.marginLeft = (20 * flag++) + "px" //每张牌离前一张牌有20px距离 					
+                div.style.marginTop = "190px";
+                div.onclick = function () {
+                    var y = this.style.marginTop;
+
+                    if (y == "190px") {
+                        this.style.marginTop = "180px"; //牌向上移
+                    } else {
+                        this.style.marginTop = "190px"; //牌回来原始位置
+                    }
+                }
+                document.body.appendChild(div); //将创建的div元素追加到网页的body中去
+            }
+            flag = 1;
+
+            //玩家3整理后的牌-------------------------------------------------------------------
+            for (var j = 0; j < newCards3.length; j++) {
+                var div = document.createElement("div"); //创建一个DIV元素
+                div.style.backgroundImage = "url(card/" + newCards3[j] + ".jpg)";
+                div.style.width = "105px"; //设置宽度
+                div.style.height = "150px"; //设置高度					
+                div.style.position = "absolute"; //设置绝对定位	
+                div.style.marginLeft = (20 * flag++) + "px" //每张牌离前一张牌有20px距离 					
+                div.style.marginTop = "360px";
+                div.onclick = function () {
+                    var y = this.style.marginTop;
+
+                    if (y == "360px") {
+                        this.style.marginTop = "350px"; //牌向上移
+                    } else {
+                        this.style.marginTop = "360px"; //牌回来原始位置
+                    }
+                }
+                document.body.appendChild(div); //将创建的div元素追加到网页的body中去
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <input type="button" value="发牌" onclick="start()" />
+    <input type="button" value="随机抢地主" onclick="upCards()" />
+    <input type="button" value="整理牌" onclick="sortCards()" />
+</body>
+
+</html>

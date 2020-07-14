@@ -2,7 +2,7 @@
  * @Author: kirin.xulong 
  * @Date: 2020-04-09 09:08:10 
  * @Last Modified by: kirin.xulong
- * @Last Modified time: 2020-07-02 08:27:57
+ * @Last Modified time: 2020-07-10 10:08:50
  */
 
 //14 jsonp 跨域原理
@@ -11,7 +11,9 @@ var el = document.createElement("script");
 el.src = "http:localhost:8080/art-send?name=1&age=2&callback=fun";
 $("body").appendchild(el);
 
-function fun(res){console.log(res.name + res.age);};
+function fun(res) {
+    console.log(res.name + res.age);
+};
 
 //服务端
 route.get('/art-send', (req, res) => {
@@ -20,8 +22,8 @@ route.get('/art-send', (req, res) => {
         name: req.query.name,
         age: req.query.age
     }
-    data= JSON.stringify(data);
-    res.end('fun ('+data+')');
+    data = JSON.stringify(data);
+    res.end('fun (' + data + ')');
 })
 
 
@@ -375,16 +377,16 @@ function queryPictures(callback) {
 
 //126 判断是数组等其他数据类型
 function isArray(arr) {
-    return  Object.prototype.toString.call(arr) === "[object Array]";
+    return Object.prototype.toString.call(arr) === "[object Array]";
 }
 
 //获取页面所有checkbox
 function getAllcheckbox() {
     var isCheckbox = new Array();
     var input = document.getElementsByTagName("input");
-    for(let i = 0; i <= input.length; i++) {
+    for (let i = 0; i <= input.length; i++) {
         let obj = input[i];
-        if ( obj.type == "checkbox") {
+        if (obj.type == "checkbox") {
             isCheckbox.push(input[i]);
         }
     };
@@ -462,7 +464,7 @@ function deepCompare(x, y) {
                 return false;
             }
 
-            switch (typeof(x[p])) {
+            switch (typeof (x[p])) {
                 case 'object':
                 case 'function':
 
@@ -525,11 +527,17 @@ delete b.x;
 
 
 /* 函数执行 */
-var foo = {n:1};
-(function() {
+var foo = {
+    n: 1
+};
+(function () {
     console.log(foo.n);
     foo.n = 3;
-    var foo = {n:2};
+    var foo = {
+        n: 2
+    };
     console.log(foo.n);
 })(foo);
 console.log(foo.n);
+
+
