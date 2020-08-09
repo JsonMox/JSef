@@ -9,12 +9,10 @@
     <style>
         * {
             font-size: 12px;
-            font-size: 12rem;
         }
 
         .parent {
             font-size: 30px;
-            font-size: 30rem;
         }
     </style>
 </head>
@@ -31,7 +29,12 @@
         <p>子元素</p>
     </div>
     <script>
-
+        /*  //复制文本到右键
+        $(document).on("click", ".CopyText", function () {
+            $(".parent").select() //选中文本
+            document.execCommand("Copy"); // 执行浏览器复制命令此命令兼容各大浏览器
+            alert(1);
+        }) */
     </script>
 </body>
 

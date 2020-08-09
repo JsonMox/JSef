@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>js创建动态树节点</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        * {
+            font-size: 12px;
+        }
+
+        .parent {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <a id="create" href="javascript:void(0)">创建列表</a>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+    var create = document.getElementById("create");
+    var ul = document.createElement("ol");
+    var num = 0;
+    create.addEventListener("click", function () {
+        tree(ul, {
+            "width": 100
+        })
+    }, false);
+
+
+    function tree(obj, paramas) {
+        if (paramas == undefined) {
+            return;
+        } else {
+            var li = document.createElement("li");
+            if (paramas.background !== undefined) {
+                li.style.background = paramas.background.toString();
+            } else {
+                li.style.background = "blue";
+            }
+            if (paramas.width !== undefined) {
+                li.style.width = parseFloat(paramas.width) + 'px';
+            } else {
+                li.style.width = 50 + 'px';
+            }
+            obj.append(li);
+            document.body.append(obj);
+        }
+    }
+</script>
+</body>
+
+</html>

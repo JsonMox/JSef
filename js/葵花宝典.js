@@ -2,7 +2,7 @@
  * @Author: kirin.xulong 
  * @Date: 2020-04-09 09:08:10 
  * @Last Modified by: kirin.xulong
- * @Last Modified time: 2020-07-10 10:08:50
+ * @Last Modified time: 2020-07-17 10:28:55
  */
 
 //14 jsonp 跨域原理
@@ -541,3 +541,30 @@ var foo = {
 console.log(foo.n);
 
 
+/* 函数执行顺序 */
+async function async1() {
+    console.log('async1 start');
+    await async2();
+    console.log('async1 end');
+}
+
+async function async2() {
+    console.log('async2');
+}
+
+console.log('script start');
+
+setTimeout(() => {
+    console.log('setTimeout');
+}, 0)
+
+async1();
+
+new Promise((resolve) => {
+    console.log('promise1');
+    resolve();
+}).then(() => {
+    console.log('promise2');
+});
+
+console.log('script end');

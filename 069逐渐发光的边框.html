@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>110blank</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        .light {
+            background: #fff;
+            width: 180px;
+            height: 180px;
+            margin: 100px auto;
+            position: relative;
+            text-align: center;
+            color: #333;
+            transform: translate3d(0, 0, 0);
+
+        }
+
+        .light-inner {
+            padding: 60px 30px 0;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            text-align: center;
+            transition: background 0.35s;
+            backface-visibility: hidden;
+        }
+
+        /* 
+        .light-inner:before,
+        .light-inner:after {
+            display: block;
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            right: 30px;
+            bottom: 30px;
+            border: 1px solid #fff;
+            opacity: 0;
+            transition: opacity 0.35s, transform 0.35s;
+        } */
+
+        .light-inner:before {
+            border-left: 0;
+            border-right: 0;
+            transform: scaleX(0, 1);
+        }
+
+        .light-inner:after {
+            border-top: 0;
+            border-bottom: 0;
+            transform: scaleY(1, 0);
+        }
+
+        .light:hover .light-inner {
+            background: #458fd2
+        }
+
+        .light:hover .light-inner:before,
+        .light:hover .light-inner:after {
+            opacity: 1;
+            transform: scale3d(1, 1, 1);
+        }
+
+        .light-inner p {
+            transition: opacity .35s, transform 0.35s;
+            transform: translate3d(0, 20px, 0);
+            color: #fff;
+            opacity: 0;
+            line-height: 30px;
+        }
+
+        .light:hover .light-inner p {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+
+        .light:hover img {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="light">
+        <img src="./img/paint-5.png" />
+        <div class="light-inner">
+            <p><a href="http://www.baidu.com">baidu.com</a></p>
+            <p>关注前端开发</p>
+        </div>
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>110blank</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            height: 50px;
+            background: #ccc;
+            width: 100%;
+        }
+    </style>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div class="box">
+        <div class="info"></div>
+    </div>
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <!-- jquery实现 -->
+    <!-- <script type="text/javascript">
+        var oInfo = $(".info");
+        var oTop = $(".box").offset().top;
+        var sTop = 0;
+        $(window).scroll(function () {
+            sTop = $(this).scrollTop();
+            oInfo.text(sTop + '-' + oTop)
+            if (sTop >= oTop) {
+                $(".box").css({
+                    "position": "fixed",
+                    "top": "10px"
+                })
+            } else {
+                $(".box").css({
+                    "position": "static"
+                })
+            }
+        });
+    </script> -->
+    <!-- js实现 -->
+    <script type="text/javascript">
+        var boxEl = document.getElementsByClassName("box")[0];
+        var oInfo = document.getElementsByClassName("info")[0];
+        var oTop = boxEl.offsetTop
+        var sTop = 0;
+        window.onscroll = function () {
+            sTop = this.scrollY;
+            oInfo.innerText = sTop + '-' + oTop;
+            if (sTop >= oTop) {
+                boxEl.style.position = "fixed";
+                boxEl.style.top = "10px"
+            } else {
+                boxEl.style.position = "static";
+            }
+        }
+    </script>
+    </body>
+
+</html>
