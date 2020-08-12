@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>110blank</title>
+    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
+
+    <style>
+        html,
+        body {
+            margin: 0px;
+            width: 100%;
+        }
+
+        #container1 {
+            position: relative;
+            margin-top: 40px;
+        }
+
+        #container2， #container3 {
+            margin-top: 40px;
+        }
+
+        #container1 #left,
+        #container1 #right {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            position: absolute;
+        }
+
+        /* 绝对定位 */
+        #container1 #left {
+            left: 0;
+            top: 0;
+        }
+
+        #container1 #right {
+            right: 0;
+            top: 0;
+        }
+
+        #container1 #center {
+            margin: 0 200px;
+            background-color: blue;
+            height: 200px;
+        }
+
+        /* float的方式 */
+        #container2 #left {
+            width: 200px;
+            height: 200px;
+            float: left;
+            background-color: gray;
+        }
+
+        #container2 #right {
+            width: 200px;
+            height: 200px;
+            float: right;
+            background-color: gray;
+        }
+
+        #container2 #center {
+            width: auto;
+            height: 200px;
+            margin: 0 200px;
+            background-color: skyblue;
+        }
+
+        /* margin的方式 */
+        #container3 #left {
+            width: 200px;
+            height: 200px;
+            float: left;
+            margin-right: -200px;
+            background-color: #FF9900
+        }
+
+        #container3 #center {
+            width: auto;
+            height: 200px;
+            background: #00FF00;
+            margin: 0 220px;
+        }
+
+        #container3 #right {
+            width: 200px;
+            height: 200px;
+            margin-left: -200px;
+            float: right;
+            background-color: #CCCC00
+        }
+
+        /* 优先加载 */
+        .main-2 {
+            float: left;
+            width: 100%;
+            margin-bottom: -3000px;
+            padding-bottom: 3000px;
+            background: #F90;
+        }
+
+        .main-wrap-2 {
+            margin: 0 200px 0 150px;
+        }
+
+        .sub-2 {
+            float: left;
+            margin-left: -100%;
+            width: 150px;
+            background: #6C0;
+            margin-bottom: -3000px;
+            padding-bottom: 3000px;
+        }
+
+        .extra-2 {
+            float: left;
+            margin-left: -200px;
+            width: 200px;
+            background: #F9F;
+            margin-bottom: -3000px;
+            padding-bottom: 3000px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>1.绝对定位 如果中间部分含有最小宽度限制，或者含有宽度的内部元素，当浏览器宽度小到一定程度，会发生层重叠现象</h3>
+    <div id="container1">
+        <div id="left">我是左边</div>
+        <div id="center">我是中间</div>
+        <div id="right">我是右边</div>
+    </div>
+
+    <h3>2.浮动布局 左右各为左右浮动 中间的width: auto; 中间列会自动插入到中间。 需要注意的是，中间部分一定要放到左右两部分之后</h3>
+    <div id="container2">
+        <div id="left">我是左边</div>
+        <div id="right">我是右边</div>
+        <div id="center">我是中间</div>
+    </div>
+
+    <h3>3.margin方式 需要注意的是，中间部分一定要放到左右两部分之后；这种方式和浮动方式没什么区别</h3>
+    <div id="container3">
+        <div id="left">我是左边</div>
+        <div id="right">我是右边</div>
+        <div id="center">我是中间</div>
+    </div>
+
+    <h3>4.优先加载</h3>
+    <div class="main-2">
+        <div class="main-wrap-2">main-wrap</div>
+    </div>
+    <div class="sub-2">sub</div>
+    <div class="extra-2">extra</div>
+
+
+
+    <script>
+    </script>
+</body>
+
+</html>

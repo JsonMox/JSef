@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" id="file">
+    <img src="" alt="" id='img'>
+</body>
+
+</html>
+<script>
+    // 获取要操作的元素
+    var ofile = document.getElementById('file');
+    // 声明保存图片base64数据的变量
+    var file_base64 = '';
+    /**
+     * 定义一些配置
+     * quality  图片压缩的质量大小  值取  0-1 中的一位小数
+     * width   	压缩后的图片宽度，默认0，即为原宽度
+     * height 	压缩后的图片高度，默认0，即为原高度
+     * lockScale 是否锁定宽高比，如果锁定且设定了width，那高度将按照原图片比较自动设定
+     */
+    var param = {
+        'quality': 0.6,
+        'width': 0,
+        'height': 0,
+        'lockScale': false
+    };
+    // 当ofile发送改变时触发
+    ofile.onchange = function () {
+        // 步骤1，获取图片文件
+        var file = document.getElementById('file').files[0];
+        // 步骤2，利用fileReader把文件转化为base64。fileReader是JS内置的一个对象，具体用法可用搜下。
+        // 创建fileReader对象
+        var fileReader = new FileReader();
+        // fileReader把文件转化为base64，让文件读取完成后，会触发FileReader的onload方法。
+        fileReader.readAsDataURL(file);
+        // 在onload方法中处理后续事件
+        fileReader.onload = function (event) {
+            // 步骤3. 创建图片对象，获取处理图片宽高，方便后面计算压缩率
+            file_base64 = this.result;
+            var size = convertBase64UrlToBlob(file_base64).size;
+            // 新建一个图像对象，用来获取老图片的原始尺寸
+            var img = new Image();
+            img.src = file_base64;
+
+            // 在图片完成加载后继续处理后面的
+            img.onload = function () {
+                // 获取图片的宽高
+                var img_width = this.width;
+                var img_height = this.height;
+                // 步骤4，创建canvas，用这个的目的，一是drawImage方法可用改变图片的尺寸，二是toDataURL可用改变图片的质量，达到压缩的目的
+                // toDataURL只能改变JPG的质量，但是这段代码偶尔也能压缩PNG，有时变大，有时变小，比较随缘。
+                var canvas = document.createElement('canvas');
+                var ctx = canvas.getContext('2d');
+
+                // 根据先前定义的配置来获得最终的图片尺寸，纯逻辑计算，不再详细解释
+                var final_width = param.width || img_width;
+                var final_height = '';
+
+                if (param.lockScale) {
+                    var scale = img_width / img_height;
+                    final_height = img_width / scale;
+                } else {
+                    final_height = param.height || img_height;
+                }
+
+                // 利用createAttribute和setAttributeNode为canvas添加宽高，如果对这个有点懵逼，请自行复习JS基础
+                var cwa = document.createAttribute('width');
+                cwa.nodeValue = final_width;
+                canvas.setAttributeNode(cwa);
+                var cwh = document.createAttribute('height');
+                cwh.nodeValue = final_height;
+                canvas.setAttributeNode(cwh);
+                // 将图片画在cancas上，drawImage的具体用法，不懂可用自己查
+                // 下面一句话意思就是把修改尺寸后的图片不做裁剪的画在canvas上
+                ctx.drawImage(this, 0, 0, final_width, final_height);
+                // 步骤5，把canvas转化为base64，可用直接当做图片链接使用
+                // 这里直接写死了image/jpeg类型，其实这个也可用设置为变量
+                file_base64 = canvas.toDataURL('image/jpeg', param.quality);
+                // 步骤6，将base64塞入img标签中进行预览
+                document.getElementById('img').src = file_base64;
+                // 将base64转化为blob，如果图片需要上传至后台，则需要这一步，然后再利用FormData进行上传
+                var blob = convertBase64UrlToBlob(file_base64);
+                // 计算图片压缩比
+                console.log('原大小：' + size);
+                console.log('现大小：' + blob.size);
+                var rate = ((blob.size / size) * 100).toFixed(2);
+                console.log('压缩率：' + rate + '%');
+            }
+
+
+
+        }
+        // 图片读取失败的回调
+        fileReader.onerror = function (event) {
+            console.log(event);
+            alert('图片解析错误');
+        }
+    }
+    // 将base64转化为blob
+    function convertBase64UrlToBlob(urlData) {
+        var arr = urlData.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]),
+            n = bstr.length,
+            u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new Blob([u8arr], {
+            type: mime
+        });
+    }
+</script>
