@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>CANVAS</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+    <h3>渐变颜色的矩形</h3>
+    <p>createLinearGradient(x,y,x1,y1); 坐标 从 (x,y) 到 (x1, y1) 创建线条渐变</p>
+    <p>createRadialGradient(x,y,r,x1,y1,r1); 坐标 从 (x,y) 到 (x1, y1) r1为半径，创建径向渐变</p>
+    <p>addColorStop()方法指定颜色停止，参数使用坐标来描述，可以是0至1</p>
+    <h5>线条渐变</h5>
+    <canvas id="rectangleLinear"></canvas>
+    <h5>径向渐变</h5>
+    <canvas id="rectangRadial"></canvas>
+
+    <div style="background-color: #f00; width: fit-content;">
+        八百标兵奔北坡，炮兵并排北边跑
+    </div>
+</body>
+
+<script>
+    //1.线条渐变
+    let c = document.getElementById("rectangleLinear");
+    let ctx = c.getContext("2d");
+    // 渐变
+    let grd = ctx.createLinearGradient(0, 0, 200, 0);
+    grd.addColorStop(0, "red");
+    grd.addColorStop(1, "white");
+    // 填充
+    ctx.fillStyle = grd;
+    ctx.fillRect(10, 10, 150, 80);
+
+    //2.径向渐变
+    let r = document.getElementById("rectangRadial");
+    let rxt = r.getContext("2d");
+
+    let radGrd = rxt.createRadialGradient(75, 50, 5, 90, 60, 100);
+    radGrd.addColorStop(0, "red");
+    radGrd.addColorStop(0.4, "yellow");
+    radGrd.addColorStop(1, "green");
+
+    rxt.fillStyle = radGrd;
+    rxt.fillRect(10, 10, 150, 80);
+</script>
+
+</html>

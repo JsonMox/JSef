@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <style>
+        body {
+            background-color: white;
+            background-image:
+                radial-gradient(hsla(0, 0%, 87%, 0.31) 9px, transparent 10px),
+                repeating-radial-gradient(hsla(0, 0%, 87%, 0.31) 0,
+                    hsla(0, 0%, 87%, 0.31) 4px, transparent 5px,
+                    transparent 20px, hsla(0, 0%, 87%, 0.31) 21px,
+                    hsla(0, 0%, 87%, 0.31) 25px, transparent 26px,
+                    transparent 50px);
+            background-size: 30px 30px, 90px 90px;
+            background-position: 0 0;
+        }
+
+        div {
+            width: 0;
+
+            height: 0;
+
+            border-top: 50px solid red;
+
+            border-left: 86.6px solid transparent;
+
+            border-right: 86.6px solid transparent;
+
+            margin-top: 100px;
+
+            position: relative;
+
+        }
+
+        div::before {
+            content: "";
+
+            display: block;
+
+            width: 0;
+
+            height: 0;
+
+            border-top: 50px solid red;
+
+            border-left: 86.6px solid transparent;
+
+            border-right: 86.6px solid transparent;
+
+            transform: rotate(75deg);
+
+            position: absolute;
+
+            top: -50px;
+
+            left: -86.6px;
+
+        }
+
+        div::after {
+            content: "";
+
+            display: block;
+
+            width: 0;
+
+            height: 0;
+
+            border-top: 50px solid red;
+
+            border-left: 86.6px solid transparent;
+
+            border-right: 86.6px solid transparent;
+
+            transform: rotate(149deg);
+
+            position: absolute;
+
+            top: -50px;
+
+            left: -86.6px;
+
+        }
+
+        #star {
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="star"></div>
+</body>
+
+
+</html>

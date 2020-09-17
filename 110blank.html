@@ -3,39 +3,39 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
-
-    <style type="text/css">
-        #back {
-            width: 300px;
-            height: 30px;
-            background-color: gray;
-            border-radius: 10%;
-            text-align: center;
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <style>
+        body {
+            background-color: white;
+            background-image:
+                radial-gradient(hsla(0, 0%, 87%, 0.31) 9px, transparent 10px),
+                repeating-radial-gradient(hsla(0, 0%, 87%, 0.31) 0,
+                    hsla(0, 0%, 87%, 0.31) 4px, transparent 5px,
+                    transparent 20px, hsla(0, 0%, 87%, 0.31) 21px,
+                    hsla(0, 0%, 87%, 0.31) 25px, transparent 26px,
+                    transparent 50px);
+            background-size: 30px 30px, 90px 90px;
+            background-position: 0 0;
         }
 
-        #force {
-            width: 270px;
-            height: 30px;
-            background-color: red;
+        #star {
+            width: 200px;
+            height: 200px;
+            background-image: url("img/paint-5.png");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            cursor: pointer;
+            transition: all 2s linear;
+        }
 
-            border-radius: 20px;
-            color: #fff;
-            line-height: 30px;
+        #star:hover {
+            background-size: 150% 150%;
         }
     </style>
-
 </head>
 
 <body>
-
-    <div id="back">
-        <div id="force">90%</div>
-    </div>
-
+    <div id="star"></div>
 </body>
-
-<script src="https://www.jq22.com/jquery/jquery-3.3.1.js"></script>
-
 
 </html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <style>
+        body {
+            background-color: white;
+            background-image:
+                radial-gradient(hsla(0, 0%, 87%, 0.31) 9px, transparent 10px),
+                repeating-radial-gradient(hsla(0, 0%, 87%, 0.31) 0,
+                    hsla(0, 0%, 87%, 0.31) 4px, transparent 5px,
+                    transparent 20px, hsla(0, 0%, 87%, 0.31) 21px,
+                    hsla(0, 0%, 87%, 0.31) 25px, transparent 26px,
+                    transparent 50px);
+            background-size: 30px 30px, 90px 90px;
+            background-position: 0 0;
+        }
+
+        #left,
+        #right {
+            width: 200px;
+            height: 300px;
+            background-color: red;
+        }
+
+        #main {
+            height: 300px;
+            background-color: skyblue;
+        }
+
+        #left {
+            float: left;
+        }
+
+        #right {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="left">left</div>
+        <div id="right">right</div>
+        <div id="main">main</div>
+    </div>
+</body>
+
+</html>
